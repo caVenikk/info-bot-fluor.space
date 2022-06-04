@@ -14,6 +14,9 @@ VIDEO_ID_2 = None
 
 @dp.message_handler(commands=['start', 'help'])
 async def start_handler(message: types.Message):
+    if message.chat.id < 0:
+        return
+
     global PICTURE_ID, VIDEO_ID_1, VIDEO_ID_2
 
     picture_path = "media/pics/NFT-fl.jpg"
