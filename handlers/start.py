@@ -1,3 +1,4 @@
+import loguru
 from aiogram.types import InputFile
 
 from loader import dp, bot
@@ -80,4 +81,7 @@ https://twitter.com/FluorSpaceNFT\n
 
     await bot.send_message(message.chat.id, emojize(info_message_2), reply_markup=keyboard)
 
-    await MessageBox.delete_last(message.from_user.id)
+    try:
+        await MessageBox.delete_last(message.from_user.id)
+    except ValueError as error:
+        loguru.logger.error(error)
