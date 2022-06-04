@@ -7,12 +7,13 @@ from core.tools import MessageBox
 from aiogram.utils.emoji import emojize
 
 PICTURE_ID = None
-VIDEO_ID = None
+VIDEO_ID_1 = None
+VIDEO_ID_2 = None
 
 
 @dp.message_handler(commands=['start', 'help'])
 async def start_handler(message: types.Message):
-    global PICTURE_ID, VIDEO_ID
+    global PICTURE_ID, VIDEO_ID_1, VIDEO_ID_2
 
     picture_path = "media/pics/NFT-fl.jpg"
     if not PICTURE_ID:
@@ -36,11 +37,11 @@ Fluor Space NFT - Это NFT пространство в реальном мир
     await bot.send_message(message.chat.id, emojize(info_message_1_1))
 
     video_path_1 = "media/vids/fluor_space_pr.mp4"
-    if not VIDEO_ID:
+    if not VIDEO_ID_1:
         msg = await bot.send_video(message.chat.id, InputFile(video_path_1))
-        VIDEO_ID = msg.video.file_id
+        VIDEO_ID_1 = msg.video.file_id
     else:
-        await bot.send_video(message.chat.id, VIDEO_ID)
+        await bot.send_video(message.chat.id, VIDEO_ID_1)
 
     info_message_1_2 = """
 :diamond_shape_with_a_dot_inside:Постоянное выставочное пространство, аудитории для встреч, лекций и \
@@ -50,11 +51,11 @@ Fluor Space NFT - Это NFT пространство в реальном мир
     await bot.send_message(message.chat.id, emojize(info_message_1_2))
 
     video_path_2 = "media/vids/space.mp4"
-    if not VIDEO_ID:
+    if not VIDEO_ID_2:
         msg = await bot.send_video(message.chat.id, InputFile(video_path_2))
-        VIDEO_ID = msg.video.file_id
+        VIDEO_ID_2 = msg.video.file_id
     else:
-        await bot.send_video(message.chat.id, VIDEO_ID)
+        await bot.send_video(message.chat.id, VIDEO_ID_2)
 
     info_message_2 = """
 :diamond_shape_with_a_dot_inside: Информационный канал с актуальными новостями о развитии проекта
