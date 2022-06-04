@@ -21,7 +21,7 @@ async def start_handler(message: types.Message):
     else:
         await bot.send_photo(message.chat.id, PICTURE_ID)
 
-    info_message_1 = """
+    info_message_1_1 = """
 :diamond_shape_with_a_dot_inside: Рады видеть вас в нашей группе!\n
 Fluor Space NFT - Это NFT пространство в реальном мире на базе лофт помещения премиум класса и с собственной \
     производственной базой по изготовлению флуоресцентного декора, одежды и аксессуаров, что позволяет осуществлять \
@@ -31,16 +31,27 @@ Fluor Space NFT - Это NFT пространство в реальном мир
     взаимный пиар. Степень вашего развития с нами зависит только от погруженности в проект. Самое главное здесь \
     как в любом комьюнити - синергия.\n
 :diamond_shape_with_a_dot_inside: Сайт проекта, где можно познакомиться с производственными возможностями \
-    и получить информацию о сообществе - https://fluor.space/\n
+    и получить информацию о сообществе - https://fluor.space/\n"""
+
+    await bot.send_message(message.chat.id, emojize(info_message_1_1))
+
+    video_path_1 = "media/vids/fluor_space_pr.mp4"
+    if not VIDEO_ID:
+        msg = await bot.send_video(message.chat.id, InputFile(video_path_1))
+        VIDEO_ID = msg.video.file_id
+    else:
+        await bot.send_video(message.chat.id, VIDEO_ID)
+
+    info_message_1_2 = """
 :diamond_shape_with_a_dot_inside:Постоянное выставочное пространство, аудитории для встреч, лекций и \
     коллабораций находится рядом с Метро Бульвар Адмирала Ушакова, от центра это 50 минут,  Поляны, 57
     """
 
-    await bot.send_message(message.chat.id, emojize(info_message_1))
+    await bot.send_message(message.chat.id, emojize(info_message_1_2))
 
-    video_path = "media/vids/space.mp4"
+    video_path_2 = "media/vids/space.mp4"
     if not VIDEO_ID:
-        msg = await bot.send_video(message.chat.id, InputFile(video_path))
+        msg = await bot.send_video(message.chat.id, InputFile(video_path_2))
         VIDEO_ID = msg.video.file_id
     else:
         await bot.send_video(message.chat.id, VIDEO_ID)
